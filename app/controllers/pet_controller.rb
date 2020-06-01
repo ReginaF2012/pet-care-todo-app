@@ -13,10 +13,17 @@ class PetController < ApplicationController
     end
 
     get '/pets/:slug' do
+        @pet = Pet.find_by(slug: params[:slug])
+        if @pet.user == current_user
+          erb :'/pets/show'
+        else
+          redirect to '/'
+        end
     end
 
     post '/pets' do
-        pet = Pet.create(params[:pet], user: current_user)
+        pet = Pet.create(params[:pet])
+        pet.update(user: current_user)
         redirect to "/pets/#{pet.slug}"
     end
 end

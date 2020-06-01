@@ -18,6 +18,7 @@ class SessionController < ApplicationController
         user = User.find_by(username: params[:user][:username])
     
         if user.authenticate(params[:user][:password])
+            current_user
             session[:user_id] = user.id
             redirect to '/'
         else
