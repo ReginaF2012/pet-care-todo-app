@@ -2,7 +2,8 @@
   <% if current_user %>
     <h1>Welcome <%= current_user.name != "" ? current_user.name : current_user.username %>!</h1>
       <p>
-      <a href="/pets">All of your pets!</a>
+      <a href="/pets">See all of your pets!</a><br>
+      <a href="/pets/new">Add a new pet!</a>
       </p>
       <form method="POST" action="/logout">
     <input type="submit" value="Log Out">
