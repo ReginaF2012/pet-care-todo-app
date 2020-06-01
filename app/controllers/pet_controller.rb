@@ -1,6 +1,10 @@
-require './config/environment'
 class PetController < ApplicationController
     get '/pets' do
-        "Hello World!"
+        if logged_in?
+          @pets = Pet.where(user_id: current_user.id)
+          erb :'/pets/index'
+        else 
+          redirect to "/"
+        end
     end
 end
