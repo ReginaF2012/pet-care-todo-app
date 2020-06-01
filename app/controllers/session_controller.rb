@@ -26,4 +26,9 @@ class SessionController < ApplicationController
         end
 
     end
+
+    post '/logout' do
+        session.clear
+        redirect to '/'
+    end
 end

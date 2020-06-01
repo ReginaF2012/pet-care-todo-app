@@ -1,6 +1,9 @@
 <div class="container">
   <% if @user %>
     <h1>Welcome <%= @user.name != "" ? @user.name : @user.username %>!!!</h1>
+      <form method="POST" action="/logout">
+    <input type="submit" value="Log Out">
+  </form>
   <% else %>
     <h1>Welcome to the Pet Care To-Do App!</h1>
     <h4>Please <a href="/login">Log In</a> or <a href="/signup">Sing Up</a> to use the app.</h4>
