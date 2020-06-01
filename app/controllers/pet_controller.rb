@@ -33,6 +33,9 @@ class PetController < ApplicationController
     end
 
     patch '/pets/:slug' do
-        binding.pry 
+        pet = Pet.find_by(slug: params[:slug])
+        pet.update(params[:pet])
+        pet.make_slug
+        redirect to "/pets/#{pet.slug}"
     end
 end
