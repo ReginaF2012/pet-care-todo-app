@@ -21,6 +21,11 @@ class PetController < ApplicationController
         end
     end
 
+    get '/pets/:slug/edit' do
+        @pet = Pet.find_by(slug: params[:slug])
+        erb :'/pets/edit'
+    end
+
     post '/pets' do
         pet = Pet.create(params[:pet])
         pet.update(user: current_user)

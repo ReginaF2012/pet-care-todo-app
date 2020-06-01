@@ -1,7 +1,7 @@
 <div class="container">
   <h1>All of your pets!</h1>
     <% @pets.each do |pet| %>
-      <h3>Name: <%= pet.name %></h3>
-      <h4>Species: <%= pet.species %></h4>
+      <h3><%= pet.name %> <%= "the #{pet.species}" if pet.species %> </h3>
+      <a href=<%= "/pets/#{pet.slug}" %>>Go to <%= pet.name %>'s page</a> 
     <% end %>
 </div>

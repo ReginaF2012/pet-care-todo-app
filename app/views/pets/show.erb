@@ -1,6 +1,10 @@
 <div class="container">
   <h1><%= @pet.name %></h1>
   <h3><%= "The #{@pet.species}" if @pet.species %></h3>
-  <h3><%= "Is #{@pet.age} years old" if @pet.age %></h3>
+  <h3><%= "is #{@pet.age} years old" if @pet.age %></h3><br>
+  <form method="GET" action=<%= "/pets/#{@pet.slug}/edit"%>>
+    <p><input type="submit" value="Edit"></p>
+  </form>
   <p><a href="/pets">Back to all of my pets</a></p>
+
 </div>
