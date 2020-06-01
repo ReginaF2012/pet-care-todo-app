@@ -1,1 +1,8 @@
-Hello World!
+<%= @message if @message %>
+<form method="POST" action="/login">
+  <label for="user[username]">Username:</label>
+  <input type="text" name="user[username]"><br><br>
+  <label for="user[password]">Password:</label>
+  <input type="password" name="user[password]"><br><br>
+  <input type="submit" name="Log In">
+</form>
