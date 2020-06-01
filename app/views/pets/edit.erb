@@ -1,6 +1,6 @@
 <div class="container">
 <h1>Edit <%= @pet.name %>'s Information.</h1>
-  <form method="POST" action="/pets">
+  <form method="POST" action=<%= "/pets/#{@pet.slug}" %>>
     <input type="hidden" name="_method" value="PATCH">
     <label for="pet[name]">Name:</label>
     <input type="text" name="pet[name]" value="<%= @pet.name %>"><br><br>

@@ -31,4 +31,8 @@ class PetController < ApplicationController
         pet.update(user: current_user)
         redirect to "/pets/#{pet.slug}"
     end
+
+    patch '/pets/:slug' do
+        binding.pry 
+    end
 end
