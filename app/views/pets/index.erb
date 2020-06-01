@@ -4,4 +4,8 @@
       <h3><%= pet.name %> <%= "the #{pet.species}" if pet.species %> </h3>
       <a href=<%= "/pets/#{pet.slug}" %>>Go to <%= pet.name %>'s page</a> 
     <% end %>
+    <p>
+    <a href="/pets/new">Make a new pet.</a><br><br>
+    <a href="/">Home</a>
+    </p>
 </div>

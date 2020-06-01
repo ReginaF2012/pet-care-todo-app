@@ -5,6 +5,12 @@
   <form method="GET" action=<%= "/pets/#{@pet.slug}/edit"%>>
     <p><input type="submit" value="Edit"></p>
   </form>
-  <p><a href="/pets">Back to all of my pets</a></p>
-
+  <form method="POST" action=<%= "/pets/#{@pet.slug}"%>>
+    <input type="hidden" name="_method" value="DELETE">
+    <p><input type="submit" value="Delete"></p>
+  </form>
+  <p>
+    <a href="/pets">Back to all of my pets</a><br><br>
+    <a href="/">Back to Home</a>
+  </p>
 </div>

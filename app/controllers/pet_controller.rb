@@ -38,4 +38,10 @@ class PetController < ApplicationController
         pet.make_slug
         redirect to "/pets/#{pet.slug}"
     end
+
+    delete '/pets/:slug' do
+        pet = Pet.find_by(slug: params[:slug])
+        pet.destroy
+        redirect to '/pets'
+    end
 end
