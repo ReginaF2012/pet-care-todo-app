@@ -4,7 +4,7 @@ class SessionController < ApplicationController
     end
 
     post '/signup' do
-        user = User.create(params[:user])
+        User.create(params[:user])
         session[:message] = "Verify Your Information!"
         redirect to '/login'
     end
