@@ -1,16 +1,16 @@
 <div class="container">
   <% if @pets.empty? %>
     <h3>Looks like you don't have any pets...</h3>
-    <h3>Why don't you <a href="/pets/new">add some?</a></h3>
-  <% else%>
+    <h3>Why don't you <a href="/pets/new">add one?</a></h3>
+  <% else %>
     <h1>All of your pets!</h1>
       <% @pets.each do |pet| %>
         <h3><%= pet.name %> <%= "the #{pet.species}" if pet.species %> </h3>
         <a href=<%= "/pets/#{pet.slug}" %>>Go to <%= pet.name %>'s page</a> 
       <% end %>
-      <p>
+    <p>
       <a href="/pets/new">Make a new pet.</a><br><br>
       <a href="/">Home</a>
-      </p>
+    </p>
   <% end %>
 </div>

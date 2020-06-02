@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Add Something to your To Do List</h1>
+  <form action="/todos" method="POST">
+    <label for="todo[name]">Short Description(ie: "Trim claws", "Vet appoitment", ect...):</label>
+    <input type="text" name="todo[name]"><br><br>
+    <label for="todo[time]">Time:</label>
+    <input type="datetime-local" name="todo[time]"><br><br>
+    Who are you taking care of?<br>
+    <% current_user.pets.each do |pet|%>
+      <input type="checkbox" name="todo[pet_id][]">
+      <label for="todo[pet_id][]"><%= pet.name %></label><br><br>
+    <% end%>
+    <label for="todo[description]">Anything else to add?</label><br>
+    <textarea name="todo[description]"></textarea><br><br>
+    <input type="submit" value="Add it to My List!">
+  </form>
+</div>
