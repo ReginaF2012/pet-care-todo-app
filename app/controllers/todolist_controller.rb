@@ -1,7 +1,7 @@
 class ToDoListController < ApplicationController
     get '/todo-list-items' do 
         if logged_in?
-            @todos = To_Do.where(user_id: current_user.id)
+            @todos = current_user.todos.uniq
             erb :'/todos/index'
         else 
             redirect to "/"
@@ -13,11 +13,13 @@ class ToDoListController < ApplicationController
     end
 
     get '/todo-list-items/:id' do
+        binding.pry
         erb :'todos/show'
     end
 
     post '/todo-list-items' do
-        binding.pry
+        todo = Todo.create(params[:todo])
+        redirect to "/todo-list-items/#{todo.id}"
     end
 
     patch '/todo-list-items/:id' do
