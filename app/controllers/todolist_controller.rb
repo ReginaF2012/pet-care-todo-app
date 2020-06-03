@@ -13,7 +13,6 @@ class ToDoListController < ApplicationController
     end
 
     get '/todo-list-items/:id' do
-        # binding.pry
         @todo = Todo.find_by(id: params[:id])
         erb :'todos/show'
     end
@@ -27,6 +26,12 @@ class ToDoListController < ApplicationController
     end
 
     delete '/todo-list-items/:id/delete' do
+    end
+
+    helpers do
+        def datetime_to_displaytime(t)
+            t.strftime("%B %d, %Y at %I:%M%p")
+        end
     end
 
 end
