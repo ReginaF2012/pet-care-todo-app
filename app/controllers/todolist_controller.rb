@@ -16,7 +16,8 @@ class ToDoListController < ApplicationController
         erb :'todos/show'
     end
 
-    post '/todo-list-items/:id' do
+    post '/todo-list-items' do
+        binding.pry
     end
 
     patch '/todo-list-items/:id' do

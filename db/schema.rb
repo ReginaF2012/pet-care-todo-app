@@ -11,27 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200601235311) do
+ActiveRecord::Schema.define(version: 20200602200331) do
 
-  create_table "pets", force: :cascade do |t|
-    t.string  "name"
-    t.integer "user_id"
-    t.string  "species"
-    t.integer "age"
-    t.string  "slug"
+  create_table "pet_todos", force: :cascade do |t|
+    t.integer "pet_id"
+    t.integer "todo_id"
   end
 
-  create_table "to_dos", force: :cascade do |t|
+  create_table "pets", force: :cascade do |t|
+    t.integer "user_id"
+    t.string  "slug"
     t.string  "name"
-    t.text    "description"
-    t.integer "pet_id"
-    t.string  "datetime"
+    t.string  "species"
+    t.string  "breed"
+    t.integer "age"
+    t.date    "birthday"
+  end
+
+  create_table "todos", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.text     "notes"
+    t.datetime "datetime"
+    t.boolean  "complete"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "name"
     t.string "password_digest"
+    t.string "name"
     t.string "email"
   end
 
