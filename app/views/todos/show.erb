@@ -11,7 +11,7 @@
   <% end %>
   </ul><br>
   <h4>Crossed off?</h4><%= @todo.complete == false ? "No" : "Yes!" %><br><br>
-  <form method="POST" action=<%= "/todo-list-items/#{@todo.id}/edit" %>>
+  <form method="GET" action=<%= "/todo-list-items/#{@todo.id}/edit" %>>
     <input type="submit" value="Edit"><br><br>
   </form>
 

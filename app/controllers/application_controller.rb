@@ -30,6 +30,10 @@ class ApplicationController < Sinatra::Base
     def birthdate_to_display(date)
         date.strftime("%B %d, %Y")
     end
+
+    def date_time_for_todo_edit(t)
+      t.strftime("%FT%H:%M")
+    end
     
   end
 
