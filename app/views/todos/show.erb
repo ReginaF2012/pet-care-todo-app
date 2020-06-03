@@ -1,0 +1,14 @@
+<div class="container">
+  <h1><%= @todo.name %></h1>
+  <h4><%= @todo.description %></h4>
+  <h4><%= @todo.datetime %></h4>
+  <h4>For:</h4>
+  <ul>
+  <% @todo.pets.each do |pet|%>
+    
+    <li><%= pet.name %></li>
+    
+  <% end %>
+  </ul>
+  <h4><%= @todo.complete == false ? "Not done!" : "Done!" %></h4>
+</div>

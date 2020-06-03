@@ -13,7 +13,8 @@ class ToDoListController < ApplicationController
     end
 
     get '/todo-list-items/:id' do
-        binding.pry
+        # binding.pry
+        @todo = Todo.find_by(id: params[:id])
         erb :'todos/show'
     end
 
