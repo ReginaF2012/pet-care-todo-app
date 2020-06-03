@@ -8,7 +8,8 @@
     <input type="datetime-local" name="todo[datetime]" value="<%= date_time_for_todo_edit(@todo.datetime) %>"><br><br>
     Who are you taking care of?<br>
     <% current_user.pets.each do |pet|%>
-      <input type="checkbox" name="todo[pet_ids][]" value=<%= "#{pet.id}" %>>
+      <input type="checkbox" name="todo[pet_ids][]" value=<%= "#{pet.id}" %> 
+      checked="<%= @todo.pets.include?(Pet.find_by(id: pet.id)) ? "on" : ""  %>">
       <label for="todo[pet_ids][]"><%= pet.name %></label><br><br>
     <% end%>
     <label for="todo[description]">Anything else to add?</label><br>
