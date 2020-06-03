@@ -5,11 +5,11 @@
   <h3><%= "Age: #{@pet.age} years old" if @pet.age %></h3>
   <h4><%= "Birthday/Gotchaday: #{birthdate_to_display(@pet.birthday)}" if @pet.birthday %></h4><br>
   <form method="GET" action=<%= "/pets/#{@pet.slug}/edit"%>>
-    <p><input type="submit" value="Edit"></p>
+    <input type="submit" value="Edit"><br><br>
   </form>
   <form method="POST" action=<%= "/pets/#{@pet.slug}"%>>
     <input type="hidden" name="_method" value="DELETE">
-    <p><input type="submit" value="Delete"></p>
+    <input type="submit" value="Delete"><br><br>
   </form>
   <p>
     <a href="/pets">Back to all of my pets</a><br><br>

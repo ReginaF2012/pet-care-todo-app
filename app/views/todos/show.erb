@@ -1,7 +1,7 @@
 <div class="container">
   <h1><%= @todo.name %></h1>
-  <h4>Description:</h4><%= @todo.description %>
-  <h4>Time:</h4><%= datetime_to_displaytime(@todo.datetime) %>
+  <h4>Description:</h4><p><%= @todo.description %></p>
+  <h4>Time:</h4><%= datetime_to_displaytime(@todo.datetime) %><br><br>
   <h4>For:</h4>
   <ul>
   <% @todo.pets.each do |pet|%>
@@ -9,6 +9,11 @@
     <li><%= pet.name %></li>
     
   <% end %>
-  </ul>
-  <h4>Crossed off?</h4><%= @todo.complete == false ? "No" : "Yes!" %>
+  </ul><br>
+  <h4>Crossed off?</h4><%= @todo.complete == false ? "No" : "Yes!" %><br><br>
+  <form method="POST" action=<%= "/todo-list-items/#{@todo.id}/edit" %>>
+    <input type="submit" value="Edit"><br><br>
+  </form>
+
+  <p> <a href="/todo-list-items">Back to your To Do List</a> </p>
 </div>
