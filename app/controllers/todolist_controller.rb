@@ -28,6 +28,9 @@ class ToDoListController < ApplicationController
     end
 
     patch '/todo-list-items/:id' do
+        todo = Todo.find_by(id: params[:id])
+        todo.update(params[:todo])
+        redirect to "/todo-list-items/#{todo.id}"
     end
 
     delete '/todo-list-items/:id/delete' do
