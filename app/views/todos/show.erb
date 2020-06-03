@@ -15,5 +15,10 @@
     <input type="submit" value="Edit"><br><br>
   </form>
 
+  <form method="POST" action=<%= "/todo-list-items/#{@todo.id}" %>>
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete"><br><br>
+  </form>
+
   <p> <a href="/todo-list-items">Back to your To Do List</a> </p>
 </div>

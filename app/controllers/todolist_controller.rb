@@ -33,7 +33,10 @@ class ToDoListController < ApplicationController
         redirect to "/todo-list-items/#{todo.id}"
     end
 
-    delete '/todo-list-items/:id/delete' do
+    delete '/todo-list-items/:id' do
+        todo = Todo.find_by(id: params[:id])
+        todo.destroy
+        redirect to '/todo-list-items'
     end
 
 end
