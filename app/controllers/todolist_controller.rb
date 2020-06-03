@@ -28,10 +28,4 @@ class ToDoListController < ApplicationController
     delete '/todo-list-items/:id/delete' do
     end
 
-    helpers do
-        def datetime_to_displaytime(t)
-            t.strftime("%B %d, %Y at %I:%M%p")
-        end
-    end
-
 end

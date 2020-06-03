@@ -22,6 +22,14 @@ class ApplicationController < Sinatra::Base
     def current_user
       @current_user ||= User.find_by(id: session[:user_id])
     end
+
+    def datetime_to_displaytime(t)
+      t.strftime("%B %d, %Y at %I:%M%p")
+    end
+
+    def birthdate_to_display(date)
+        date.strftime("%B %d, %Y")
+    end
     
   end
 

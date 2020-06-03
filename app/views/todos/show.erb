@@ -1,7 +1,7 @@
 <div class="container">
   <h1><%= @todo.name %></h1>
-  <h4><%= @todo.description %></h4>
-  <h4><%= datetime_to_displaytime(@todo.datetime) %></h4>
+  <h4>Description:</h4><%= @todo.description %>
+  <h4>Time:</h4><%= datetime_to_displaytime(@todo.datetime) %>
   <h4>For:</h4>
   <ul>
   <% @todo.pets.each do |pet|%>
@@ -10,5 +10,5 @@
     
   <% end %>
   </ul>
-  <h4><%= @todo.complete == false ? "Not done!" : "Done!" %></h4>
+  <h4>Crossed off?</h4><%= @todo.complete == false ? "No" : "Yes!" %>
 </div>
