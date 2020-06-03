@@ -1,5 +1,5 @@
 <div class="container">
-  <h1><%= @todo.name %></h1>
+  <h1><%= "#{@todo.name}" %></h1>
   <h4>Description:</h4><p><%= @todo.description %></p>
   <h4>Time:</h4><%= datetime_to_displaytime(@todo.datetime) %><br><br>
   <h4>For:</h4>
@@ -10,7 +10,10 @@
     
   <% end %>
   </ul><br>
-  <h4>Crossed off?</h4><%= @todo.complete == false ? "No" : "Yes!" %><br><br>
+  <h4>Crossed off?</h4><%= @todo.complete == true ? "Yes!" : "No" %><br><br>
+  <form method="POST" action=<%= "/todo-list-items/#{@todo.id}/cross-it-off" %>>
+    <input type="submit" value="Cross it off!"><br><br>
+  </form>
   <form method="GET" action=<%= "/todo-list-items/#{@todo.id}/edit" %>>
     <input type="submit" value="Edit"><br><br>
   </form>

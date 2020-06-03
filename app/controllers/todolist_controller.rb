@@ -22,6 +22,11 @@ class ToDoListController < ApplicationController
         erb :'todos/edit'
     end
 
+    post '/todo-list-items/:id/cross-it-off' do
+        Todo.find_by(id: params[:id]).update(complete: true)
+        redirect to '/todo-list-items'
+    end
+
     post '/todo-list-items' do
         todo = Todo.create(params[:todo])
         redirect to "/todo-list-items/#{todo.id}"

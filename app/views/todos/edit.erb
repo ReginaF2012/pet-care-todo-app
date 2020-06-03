@@ -3,7 +3,7 @@
   <form action=<%= "/todo-list-items/#{@todo.id}" %> method="POST">
     <input type="hidden" name="_method" value="patch">
     <label for="todo[name]">Short Description(ie: "Trim claws", "Vet appoitment", ect...):</label>
-    <input type="text" name="todo[name]" value=<%= @todo.name %>><br><br>
+    <input type="text" name="todo[name]" value="<%= @todo.name %>"><br><br>
     <label for="todo[datetime]">Time:</label>
     <input type="datetime-local" name="todo[datetime]" value="<%= date_time_for_todo_edit(@todo.datetime) %>"><br><br>
     Who are you taking care of?<br>
