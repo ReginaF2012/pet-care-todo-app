@@ -58,7 +58,7 @@ class PetController < ApplicationController
       if @pet.user == current_user
         erb :'/pets/todos_for_one_pet'
       else
-        erb :'welcome'
+        redirect to '/'
       end
     end
 end
