@@ -13,7 +13,6 @@ class ToDoListController < ApplicationController
     end
 
     get '/todo-list-items/upcoming' do
-        binding.pry
         if logged_in?
             todos = current_user.todos.uniq
             @upcoming_todos = todos.select{ |todo| todo.datetime >= Date.today && todo.datetime <= 1.week.from_now && todo.complete == false}
