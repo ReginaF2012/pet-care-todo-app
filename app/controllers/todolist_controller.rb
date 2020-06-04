@@ -12,7 +12,7 @@ class ToDoListController < ApplicationController
         if logged_in?
           erb :'/todos/new'
         else
-          erb :'welcome'
+          redirect to '/'
         end
     end
 
