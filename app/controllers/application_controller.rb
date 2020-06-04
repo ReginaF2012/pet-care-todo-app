@@ -10,9 +10,11 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    @user = User.find_by(id: session[:user_id]) if session[:user_id]
-    todos = @user.todos.uniq
-    @upcoming_todos = todos.select{ |todo| todo.datetime >= Date.today && todo.datetime <= 1.week.from_now && todo.complete == false}
+    if logged_in?
+      @user = User.find_by(id: session[:user_id]) if session[:user_id]
+      todos = @user.todos.uniq
+      @upcoming_todos = todos.select{ |todo| todo.datetime >= Date.today && todo.datetime <= 1.week.from_now && todo.  complete == false}
+    end
     erb :welcome
   end
 

@@ -9,7 +9,11 @@ class PetController < ApplicationController
     end
 
     get '/pets/new' do
+      if logged_in?
         erb :'/pets/new'
+      else
+        erb :'/welcome'
+      end
     end
 
     get '/pets/:slug' do
@@ -23,7 +27,11 @@ class PetController < ApplicationController
 
     get '/pets/:slug/edit' do
         @pet = Pet.find_by(slug: params[:slug])
-        erb :'/pets/edit'
+        if @pet.user == current_user
+          erb :'/pets/edit'
+        else
+          erb :'/welcome'
+        end
     end
 
     post '/pets' do
@@ -47,6 +55,10 @@ class PetController < ApplicationController
 
     get '/pets/:slug/to-do' do
       @pet = Pet.find_by(slug: params[:slug])
-      erb :'/pets/todos_for_one_pet'
+      if @pet.user == current_user
+        erb :'/pets/todos_for_one_pet'
+      else
+        erb :'welcome'
+      end
     end
 end
