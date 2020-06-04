@@ -12,7 +12,7 @@ class PetController < ApplicationController
       if logged_in?
         erb :'/pets/new'
       else
-        erb :'/welcome'
+        redirect to '/'
       end
     end
 
@@ -30,7 +30,7 @@ class PetController < ApplicationController
         if @pet.user == current_user
           erb :'/pets/edit'
         else
-          erb :'/welcome'
+          redirect to '/'
         end
     end
 

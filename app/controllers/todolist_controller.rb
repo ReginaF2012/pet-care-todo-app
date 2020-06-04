@@ -8,8 +8,12 @@ class ToDoListController < ApplicationController
         end
     end
 
-    get '/todo-list-items/new' do 
-        erb :'/todos/new'
+    get '/todo-list-items/new' do
+        if logged_in?
+          erb :'/todos/new'
+        else
+          erb :'welcome'
+        end
     end
 
     get '/todo-list-items/upcoming' do
