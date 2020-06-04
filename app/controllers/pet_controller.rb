@@ -44,4 +44,8 @@ class PetController < ApplicationController
         pet.destroy
         redirect to '/pets'
     end
+
+    get '/pets/:slug/to-do' do
+      erb :'/pets/todos_for_one_pet'
+    end
 end
