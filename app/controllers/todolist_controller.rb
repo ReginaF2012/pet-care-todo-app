@@ -43,6 +43,7 @@ class ToDoListController < ApplicationController
 
     post '/todo-list-items' do
         todo = Todo.create(params[:todo])
+        todo.user = current_user
         redirect to "/todo-list-items/#{todo.id}"
     end
 
