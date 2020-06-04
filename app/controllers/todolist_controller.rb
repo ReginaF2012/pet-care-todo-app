@@ -22,6 +22,16 @@ class ToDoListController < ApplicationController
         erb :'todos/edit'
     end
 
+    get 'todo-list-items/upcoming' do
+        if logged_in?
+            @todos = current_user.todos.uniq
+            @upcomming_todos = users_todos.select{ |todo| todo.datetime >= Date.today && todo.datetime <= 1.week.from_now && todo.complete == false}
+            erb :'todos/upcoming'
+        else 
+            redirect to "/"
+        end
+    end
+
     post '/todo-list-items/:id/cross-it-off' do
         Todo.find_by(id: params[:id]).update(complete: true)
         redirect to '/todo-list-items'
