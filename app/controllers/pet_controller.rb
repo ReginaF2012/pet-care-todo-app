@@ -46,6 +46,7 @@ class PetController < ApplicationController
     end
 
     get '/pets/:slug/to-do' do
+      @pet = Pet.find_by(slug: params[:slug])
       erb :'/pets/todos_for_one_pet'
     end
 end

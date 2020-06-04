@@ -1,0 +1,19 @@
+<div class="container">
+  <% if @pet.todos.empty?%>
+    <p>
+      Doesn't look like you have anything to do for <%= @pet.name %><br>
+      <a href ="/todo-list-items/new">Add something to your to do list?</a><br>
+      <a href="">Home</a><br>
+      <a href=<%= "/pets/#{@pet.slug}" %>><%= @pet.name %>'s page</a><br>
+      <a href="/pets">All of your pets</a>
+    </p>
+  <% else %>
+    <h1>To Do List for <%= @pet.name %></h1>
+    <ul>
+    </ul>
+    <a href ="/todo-list-items/new">Add something to your to do list?</a><br>
+    <a href="">Home</a><br>
+    <a href=<%= "/pets/#{@pet.slug}" %>><%= @pet.name %>'s page</a><br>
+    <a href="/pets">All of your pets</a>
+  <% end %>
+</div>
