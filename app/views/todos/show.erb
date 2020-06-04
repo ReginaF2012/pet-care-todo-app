@@ -1,4 +1,5 @@
 <div class="container">
+<% binding.pry%>
   <h1><%= "#{@todo.name}" %></h1>
   <h4>Description:</h4><p><%= @todo.description %></p>
   <h4>Time:</h4><%= datetime_to_displaytime(@todo.datetime) %><br><br>
