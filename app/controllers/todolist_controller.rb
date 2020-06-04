@@ -1,7 +1,7 @@
 class ToDoListController < ApplicationController
     get '/todo-list-items' do 
         if logged_in?
-            @todos = current_user.todos.uniq
+            @todos = current_user.todos
             erb :'/todos/index'
         else 
             redirect to "/"
