@@ -7,5 +7,11 @@
    <a href="/">Home</a>
    </p>
  <% else %>
+   <h1>Upcoming Items on Your To Do List</h1>
+   <ul>
+   <% @upcoming_todos.each do |todo| %>
+     <li><a href=<%= "/todo-list-items/#{todo.slug}" %>><%= "#{todo.name} @ #{datetime_to_displaytime(todo.time)}" %></a></li>
+   <% end %>
+   </ul>
  <% end%>
 </div>
