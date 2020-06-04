@@ -11,7 +11,7 @@
     <h1>To Do List for <%= @pet.name %></h1>
     <ul>
       <% @pet.todos.each do |todo| %>
-        <li><a href=<%= "/todo-list-items/#{todo.id}" %>><%= @todo.name %></a></li> 
+        <li><a href=<%= "/todo-list-items/#{todo.id}" %>><%= todo.name %></a></li> 
       <% end%>
     </ul>
     <a href ="/todo-list-items/new">Add something to your to do list?</a><br>
