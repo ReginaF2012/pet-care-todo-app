@@ -1,4 +1,38 @@
 <div class="container">
+      <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" href=<%= "/user/#{current_user.id}" %>>Profile</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"     aria-expanded="false">To-Do List</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/todo-list-items">Your To-Do List</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/todo-list-items/new">Add Something to Your List</a>
+          <a class="dropdown-item" href="/todo-list-items/overdue">Overdue Items on Your List</a>
+          <a class="dropdown-item" href="/todo-list-items/upcoming">Upcoming Items on Your List</a>
+          <a class="dropdown-item" href="/todo-list-items/incomplete">Incomplete Items on Your List</a>
+          <a class="dropdown-item" href="/todo-list-items/complete">Complete Items on Your List</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"     aria-expanded="false">Pets</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/pets">Your Pets</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/pets/new">Add a Pet</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href=<%= "/pets/#{@pet.slug}/to-do" %>>To Do List for <%= @pet.name %></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Log Out</a>
+      </li>
+      <!--<li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>-->
+    </ul>
   <% if @pet.todos.empty?%>
     <p>
       Doesn't look like you have anything to do for <%= @pet.name %><br>
@@ -15,10 +49,7 @@
       <% end%>
     </ul><br><br>
     <p>
-    <a href ="/todo-list-items/new">Add something to your to do list?</a><br>
-    <a href="">Home</a><br>
     <a href=<%= "/pets/#{@pet.slug}" %>><%= @pet.name %>'s page</a><br>
-    <a href="/pets">All of your pets</a>
     </p>
   <% end %>
 </div>
