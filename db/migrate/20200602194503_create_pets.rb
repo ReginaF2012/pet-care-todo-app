@@ -8,6 +8,7 @@ class CreatePets < ActiveRecord::Migration
       t.string :breed
       t.integer :age
       t.date :birthday
+      t.datetime :created_at
     end
   end
 end

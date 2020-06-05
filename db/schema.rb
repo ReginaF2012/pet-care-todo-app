@@ -19,13 +19,14 @@ ActiveRecord::Schema.define(version: 20200604212308) do
   end
 
   create_table "pets", force: :cascade do |t|
-    t.integer "user_id"
-    t.string  "slug"
-    t.string  "name"
-    t.string  "species"
-    t.string  "breed"
-    t.integer "age"
-    t.date    "birthday"
+    t.integer  "user_id"
+    t.string   "slug"
+    t.string   "name"
+    t.string   "species"
+    t.string   "breed"
+    t.integer  "age"
+    t.date     "birthday"
+    t.datetime "created_at"
   end
 
   create_table "todos", force: :cascade do |t|

@@ -18,7 +18,7 @@ class ToDoListController < ApplicationController
 
     get '/todo-list-items/upcoming' do
         if logged_in?
-            todos = current_user.todos.uniq
+            todos = current_user.todos
             @upcoming_todos = todos.select{ |todo| todo.datetime >= Date.today && todo.datetime <= 1.week.from_now && todo.complete == false}
             erb :'todos/upcoming'
         else 
@@ -28,12 +28,20 @@ class ToDoListController < ApplicationController
 
     get '/todo-list-items/:id' do
         @todo = Todo.find_by(id: params[:id])
-        erb :'todos/show'
+        if @todo.user == current_user
+          erb :'todos/show'
+        else
+          redirect to '/'
+        end
     end
 
     get '/todo-list-items/:id/edit' do
         @todo = Todo.find_by(id: params[:id])
-        erb :'todos/edit'
+        if @todo.user == current_user
+          erb :'todos/edit'
+        else
+          redirect to '/'
+        end
     end
 
     post '/todo-list-items/:id/cross-it-off' do
@@ -43,7 +51,7 @@ class ToDoListController < ApplicationController
 
     post '/todo-list-items' do
         todo = Todo.create(params[:todo])
-        todo.user = current_user
+        todo.update(user: current_user)
         redirect to "/todo-list-items/#{todo.id}"
     end
 
