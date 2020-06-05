@@ -1,5 +1,6 @@
 <div class="container">
   <% if current_user %>
+   <h1>Welcome <%= current_user.name != "" ? current_user.name : current_user.email %>!</h1>
     <a href=<%= "/users/#{current_user.id}" %>>Your Homepage</a>
   <% else %>
     <h1>Welcome to the Pet Care To-Do App!</h1>
