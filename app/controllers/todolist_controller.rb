@@ -51,7 +51,9 @@ class ToDoListController < ApplicationController
 
     post '/todo-list-items' do
         todo = Todo.create(params[:todo])
-        todo.update(user: current_user)
+        # Created an after_create callback method that does this
+        # todo.update(user: current_user)
+
         redirect to "/todo-list-items/#{todo.id}"
     end
 
