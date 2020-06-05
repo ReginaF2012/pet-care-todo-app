@@ -8,6 +8,15 @@ class ToDoListController < ApplicationController
         end
     end
 
+    get '/todo-list-items/complete' do
+        if logged_in?
+            @completed_todos = current_user.todos.select{ |todo| todo.complete == true }
+            erb :'/todos/complete'
+        else
+            redirect to '/'
+        end
+    end
+
     get '/todo-list-items/new' do
         if logged_in?
           erb :'/todos/new'

@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Everything You've Crossed Off</h1>
+  <ul>
+    <% @completed_todos.each do |todo|%>
+      <li><a href=<%= "/todo-list-items/#{todo.id}" %>><%= todo.name %></a></li>
+    <% end %>
+  </ul><br><br>
+  <p>
+    <a href="/todo-list-items/new">Make a new item for your To Do List</a><br>
+    <a href=<%= "/users/#{current_user.id}" %>>Home</a>
+  </p>
+</div>
