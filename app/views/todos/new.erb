@@ -1,4 +1,37 @@
 <div class="container">
+      <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" href=<%= "/users/#{current_user.id}" %>>Profile</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"     aria-expanded="false">Your To-Do List</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/todo-list-items">Your To-Do List</a>
+          <div class="dropdown-divider"></div>          
+          <a class="dropdown-item" href="/todo-list-items/overdue">Overdue Items on Your List</a>
+          <a class="dropdown-item" href="/todo-list-items/upcoming">Upcoming Items on Your List</a>
+          <a class="dropdown-item" href="/todo-list-items/incomplete">Incomplete Items on Your List</a>
+          <a class="dropdown-item" href="/todo-list-items/complete">Complete Items on Your List</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/todo-list-items/new">Add Something to Your List</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"     aria-expanded="false">Pets</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/pets">Your Pets</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/pets/new">Add a Pet</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Log Out</a>
+      </li>
+      <!--<li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>-->
+    </ul>
   <h1>Add Something to your To Do List</h1>
   <form action="/todo-list-items" method="POST">
     <label for="todo[name]">Short Description(ie: "Trim claws", "Vet appoitment", ect...):</label>
