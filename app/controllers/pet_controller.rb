@@ -18,7 +18,7 @@ class PetController < ApplicationController
 
     get '/pets/:slug' do
         @pet = Pet.find_by(slug: params[:slug])
-        if @pet.user == current_user
+        if logged_in? && @pet.user == current_user
           erb :'/pets/show'
         else
           redirect to '/'
@@ -27,7 +27,7 @@ class PetController < ApplicationController
 
     get '/pets/:slug/edit' do
         @pet = Pet.find_by(slug: params[:slug])
-        if @pet.user == current_user
+        if logged_in? && @pet.user == current_user
           erb :'/pets/edit'
         else
           redirect to '/'
@@ -55,7 +55,7 @@ class PetController < ApplicationController
 
     get '/pets/:slug/to-do' do
       @pet = Pet.find_by(slug: params[:slug])
-      if @pet.user == current_user
+      if logged_in? && @pet.user == current_user
         erb :'/pets/todos_for_one_pet'
       else
         redirect to '/'

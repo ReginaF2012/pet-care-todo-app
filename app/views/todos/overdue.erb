@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>Overdue Items on Your To Do List</h1>
+  <ul>
+    <% @overdue_todos do |todo|%>
+      <li><a href=<%= "/todo-list-items/#{todo.id}" %>><%= todo.name %></a></li>
+    <% end %>
+  </ul><br><br>
+  <p>
+    <a href="/todo-list-items"> Back to your To Do List</a><br>
+    <a href="/todo-list-items/new">Make a new item for your To Do List</a><br>
+    <a href=<%= "/users/#{current_user.id}" %>>Home</a>
+  </p>
+</div>

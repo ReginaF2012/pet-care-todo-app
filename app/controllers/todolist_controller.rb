@@ -1,11 +1,20 @@
 class ToDoListController < ApplicationController
     get '/todo-list-items' do 
         if logged_in?
-            @todos = current_user.todos
+            @todos = current_user.todos.order(:datetime)
             erb :'/todos/index'
         else 
             redirect to "/"
         end
+    end
+
+    get '/todo-list-items/overdue' do
+        if logged_in?
+            @overdue_todos = current_user.todos.select{ |todo| todo.complete == false && todo.datetime < DateTime.now }
+            erb :'todos/overdue'
+        else
+           redirect to '/'
+        end 
     end
 
     get '/todo-list-items/complete' do
@@ -46,7 +55,7 @@ class ToDoListController < ApplicationController
 
     get '/todo-list-items/:id' do
         @todo = Todo.find_by(id: params[:id])
-        if @todo.user == current_user
+        if logged_in? && @todo.user == current_user
           erb :'todos/show'
         else
           redirect to '/'
@@ -55,7 +64,7 @@ class ToDoListController < ApplicationController
 
     get '/todo-list-items/:id/edit' do
         @todo = Todo.find_by(id: params[:id])
-        if @todo.user == current_user
+        if logged_in? && @todo.user == current_user
           erb :'todos/edit'
         else
           redirect to '/'
