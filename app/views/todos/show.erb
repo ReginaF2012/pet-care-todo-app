@@ -11,9 +11,13 @@
   <% end %>
   </ul><br>
   <h4>Crossed off?</h4><%= @todo.complete == true ? "Yes!" : "No" %><br><br>
-  <form method="POST" action=<%= "/todo-list-items/#{@todo.id}/cross-it-off" %>>
-    <input type="submit" value="Cross it off!"><br><br>
-  </form>
+
+  <% if @todo.complete == false %>
+    <form method="POST" action=<%= "/todo-list-items/#{@todo.id}/cross-it-off" %>>
+      <input type="submit" value="Cross it off!"><br><br>
+    </form>
+  <% else %>
+  <% end %>
   <form method="GET" action=<%= "/todo-list-items/#{@todo.id}/edit" %>>
     <input type="submit" value="Edit"><br><br>
   </form>
