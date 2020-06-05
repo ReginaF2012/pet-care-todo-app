@@ -17,6 +17,9 @@
       <input type="submit" value="Cross it off!"><br><br>
     </form>
   <% else %>
+    <form method="POST" action=<%= "/todo-list-items/#{@todo.id}/put-it-back-on-the-list" %>>
+      <input type="submit" value="Put it back on your list?"><br><br>
+    </form>
   <% end %>
   <form method="GET" action=<%= "/todo-list-items/#{@todo.id}/edit" %>>
     <input type="submit" value="Edit"><br><br>

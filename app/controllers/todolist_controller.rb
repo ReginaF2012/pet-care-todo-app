@@ -46,7 +46,12 @@ class ToDoListController < ApplicationController
 
     post '/todo-list-items/:id/cross-it-off' do
         Todo.find_by(id: params[:id]).update(complete: true)
-        redirect to '/todo-list-items'
+        redirect to "/todo-list-items/#{params[:id]}"
+    end
+    
+    post '/todo-list-items/:id/put-it-back-on-the-list' do
+        Todo.find_by(id: params[:id]).update(complete: false)
+        redirect to "/todo-list-items/#{params[:id]}"
     end
 
     post '/todo-list-items' do
