@@ -7,11 +7,11 @@ class SessionController < ApplicationController
 
     post '/signup' do
         user = User.new(params[:user])
-        if !user.username.include?(" ") && user.save
+        if user.save
             session[:message] = "Verify Your Information!"
             redirect to '/login'
         else
-            session[:message] = "Invalid username or password."
+            session[:message] = "Invalid email or password."
             redirect to '/signup'
         end
     end
@@ -23,14 +23,14 @@ class SessionController < ApplicationController
     end
 
     post '/login' do
-        user = User.find_by(username: params[:user][:username])
+        user = User.find_by(email: params[:user][:email])
     
         if user.authenticate(params[:user][:password])
             current_user
             session[:user_id] = user.id
             redirect to '/'
         else
-            @message = "Wrong Username or Password"
+            @message = "Wrong Email or Password"
             erb :'sessions/login'
         end
 
