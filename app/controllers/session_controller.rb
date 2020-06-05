@@ -1,16 +1,24 @@
 class SessionController < ApplicationController
     get '/signup' do 
+        @message = session[:message]
+        session[:message] = nil
         erb :'sessions/signup'
     end
 
     post '/signup' do
-        User.create(params[:user])
-        session[:message] = "Verify Your Information!"
-        redirect to '/login'
+        user = User.new(params[:user])
+        if user.save
+            session[:message] = "Verify Your Information!"
+            redirect to '/login'
+        else
+            session[:message] = "Invalid username or password."
+            redirect to '/signup'
+        end
     end
 
     get '/login' do
         @message = session[:message]
+        session[:message] = nil
         erb :'/sessions/login'
     end
 

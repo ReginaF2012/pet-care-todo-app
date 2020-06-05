@@ -1,9 +1,13 @@
-<form action="/signup" method="POST">
-  <label for="user[username]"> Username: </label>
-  <input type="text" name="user[username]"><br><br>
-  <label for="user[password]">Password:</label>
-  <input type="password" name="user[password]"><br><br>
-  <label for="user[name]">Name:</label>
-  <input type="text" name="user[name]">*<br><br>
-  <input type="submit" name="Submit">
-</form>
+<div class="container">
+  <%= @message if @message %>
+  <form action="/signup" method="POST">
+    <label for="user[username]"> Username: </label>
+    <input type="text" name="user[username]"><br><br>
+    <label for="user[password]">Password:</label>
+    <input type="password" name="user[password]"><br><br>
+    <label for="user[name]">Name:</label>
+    <input type="text" name="user[name]">*<br><br>
+    <input type="submit" name="Submit">
+  </form>
+  <a href="/login">Log In</a>
+</div>
