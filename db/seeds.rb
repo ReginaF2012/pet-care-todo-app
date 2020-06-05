@@ -1,8 +1,3 @@
-User.destroy_all
-Pet.destroy_all
-Todo.destroy_all
-PetTodo.destroy_all
-
 10.times do 
     # I wanted the names and the emails to match up a bit better...
     name = Faker::Name.name
@@ -28,5 +23,5 @@ end
         pets_array << user.pets[i]
         i += 1
     end
-    Todo.create(name: Faker::Lorem.sentence, description: Faker::Lorem.paragraphs, datetime: rand(30.days).seconds.from_now, complete: Faker::Boolean.boolean, pets: pets_array)
+    Todo.create(name: Faker::Lorem.sentence, description: Faker::Lorem.paragraphs[0], datetime: rand(30.days).seconds.from_now, complete: Faker::Boolean.boolean, pets: pets_array)
 end
