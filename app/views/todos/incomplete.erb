@@ -1,7 +1,7 @@
 <div class="container">
-  <h1>Everything You've Crossed Off</h1>
+  <h1>Everything That <bold>Isn't</bold> Crossed Off Your List</h1>
   <ul>
-    <% @completed_todos.each do |todo|%>
+    <% @incompleted_todos.each do |todo|%>
       <li><a href=<%= "/todo-list-items/#{todo.id}" %>><%= todo.name %></a></li>
     <% end %>
   </ul><br><br>
