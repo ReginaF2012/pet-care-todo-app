@@ -1,10 +1,40 @@
 <div class="container">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" href=<%= "/users/#{current_user.id}" %>>Profile</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"     aria-expanded="false">Your To-Do List</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/todo-list-items">Your To-Do List</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/todo-list-items/new">Add Something to Your List</a>
+          <a class="dropdown-item" href="/todo-list-items/overdue">Overdue Items on Your List</a>
+          <a class="dropdown-item" href="/todo-list-items/incomplete">Incomplete Items on Your List</a>
+          <a class="dropdown-item" href="/todo-list-items/complete">Complete Items on Your List</a>
+        </div>
+        <li class="nav-item">
+          <a class="nav-link active" href="/todo-list-items/upcoming">Upcoming Items on Your List</a>
+        </li>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"     aria-expanded="false">Pets</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/pets">Your Pets</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/pets/new">Add a Pet</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Log Out</a>
+      </li>
+      <!--<li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>-->
+    </ul>
  <% if @upcoming_todos.empty?%>
    <p>
-   Looks like there's isn't anything upcoming on your To Do List.<br>
-   <a href="/todo-list-items/new">Add something to your To Do List?</a><br>
-   <a href="/todo-list-items">Your To Do List</a><br>
-   <a href="/">Home</a>
+   Looks like there's isn't anything upcoming on your To Do List.
    </p>
  <% else %>
    <h1>Upcoming Items on Your To Do List</h1>
