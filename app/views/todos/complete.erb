@@ -32,15 +32,14 @@
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
       </li>-->
     </ul>
-  <h1>Everything You've Crossed Off</h1>
-  <ul>
-    <% @completed_todos.each do |todo|%>
-      <li><a href=<%= "/todo-list-items/#{todo.id}" %>><%= todo.name %></a></li>
-    <% end %>
-  </ul><br><br>
-  <p>
-    <a href="/todo-list-items"> Back to your To Do List</a><br>
-    <a href="/todo-list-items/new">Make a new item for your To Do List</a><br>
-    <a href=<%= "/users/#{current_user.id}" %>>Home</a>
-  </p>
+  <% if @completed_todos.empty?%>
+    <h1>You have nothing crossed off</h1>
+  <% else %>
+    <h1>Everything You've Crossed Off</h1>
+    <ul>
+      <% @completed_todos.each do |todo|%>
+        <li><a href=<%= "/todo-list-items/#{todo.id}" %>><%= todo.name %></a></li>
+      <% end %>
+    </ul><br><br>
+  <% end %>
 </div>
