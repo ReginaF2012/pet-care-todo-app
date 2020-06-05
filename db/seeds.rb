@@ -4,7 +4,9 @@ Todo.destroy_all
 PetTodo.destroy_all
 
 10.times do 
-    User.create(email: Faker::Internet.unique.email, password: "password", name: Faker::Name.name)
+    # I wanted the names and the emails to match up a bit better...
+    name = Faker::Name.name
+    User.create(email: Faker::Internet.unique.email(name: name, separators: '_'), password: "password", name: name)
 end
 
 30.times do
