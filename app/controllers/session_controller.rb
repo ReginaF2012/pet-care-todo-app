@@ -7,7 +7,7 @@ class SessionController < ApplicationController
 
     post '/signup' do
         user = User.new(params[:user])
-        if user.email != "" && user.save
+        if user.save
             session[:message] = "Verify Your Information!"
             redirect to '/login'
         else
