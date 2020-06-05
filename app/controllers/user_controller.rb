@@ -7,6 +7,7 @@ class UserController < ApplicationController
           @upcoming_todos = todos.select{ |todo| todo.datetime >= Date.today && todo.datetime <= 1.week.from_now && todo.  complete == false}
           erb :'users/homepage'
         else
+            session[:message] = "You don't have access to that page"
             redirect to '/'
         end
     end

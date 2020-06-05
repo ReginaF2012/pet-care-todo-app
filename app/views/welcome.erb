@@ -1,4 +1,5 @@
 <div class="container">
+  <%= @message if @message %>
   <% if current_user %>
    <h1>Welcome <%= current_user.name != "" ? current_user.name : current_user.email %>!</h1>
     <a href=<%= "/users/#{current_user.id}" %>>Your Homepage</a>
