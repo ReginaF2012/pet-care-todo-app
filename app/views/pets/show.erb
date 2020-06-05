@@ -1,7 +1,7 @@
 <div class="container">
   <h1><%= @pet.name %></h1>
-  <h3><%= "Species: #{@pet.species}" if @pet.species != "" %></h3>
-  <h4><%= "Breed: #{@pet.breed}" if @pet.breed != "" %></h4>
+  <h3><%= "Species: #{@pet.species}" if @pet.species != "" &&  @pet.species != nil %></h3>
+  <h4><%= "Breed: #{@pet.breed}" if @pet.breed != "" &&  @pet.breed != nil %></h4>
   <h4><%= "Birthday/Gotchaday: #{birthdate_to_display(@pet.birthday)}" if @pet.birthday %></h4><br>
   <form method="GET" action=<%= "/pets/#{@pet.slug}/edit"%>>
     <input type="submit" value="Edit"><br><br>
