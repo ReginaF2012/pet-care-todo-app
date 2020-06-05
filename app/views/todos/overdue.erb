@@ -1,10 +1,14 @@
 <div class="container">
-  <h1>Overdue Items on Your To Do List</h1>
-  <ul>
-    <% @overdue_todos.each do |todo|%>
-      <li><a href=<%= "/todo-list-items/#{todo.id}" %>><%= todo.name %></a></li>
-    <% end %>
-  </ul><br><br>
+  <% if @overdue_todos.empty?%>
+    <h1> Nothing is overdue.</h1>
+  <% else%>
+    <h1>Overdue Items on Your To Do List</h1>
+    <ul>
+      <% @overdue_todos.each do |todo|%>
+        <li><a href=<%= "/todo-list-items/#{todo.id}" %>><%= todo.name %></a></li>
+      <% end %>
+    </ul><br><br>
+  <% end %>
   <p>
     <a href="/todo-list-items"> Back to your To Do List</a><br>
     <a href="/todo-list-items/new">Make a new item for your To Do List</a><br>
