@@ -1,6 +1,6 @@
 # Contributing
 
-Any contributions to improve the app are welcome and encouraged. If this is your first time contributing, please continue reading to learn how to make the most meaningful and useful impact possible.
+Any contributions to improve the app are welcome and encouraged. If this is your first time contributing, please continue reading.
 
 ## Raising an Issue to Encourage a Contribution
 
