@@ -2,6 +2,8 @@ class ToDoListController < ApplicationController
     get '/todo-list-items' do 
         if logged_in?
             @todos = current_user.todos.order(:datetime)
+            @message = session[:message]
+            session[:message] = nil
             erb :'/todos/index'
         else 
             redirect to "/"
@@ -110,7 +112,10 @@ class ToDoListController < ApplicationController
 
     delete '/todo-list-items/:id' do
         todo = Todo.find_by(id: params[:id])
-        todo.destroy
+        if todo.user == current_user
+          todo.destroy
+          session[:message] = "Successfully Deleted"
+        end
         redirect to '/todo-list-items'
     end
 
