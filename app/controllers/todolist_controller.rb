@@ -67,6 +67,8 @@ class ToDoListController < ApplicationController
     get '/todo-list-items/:id/edit' do
         @todo = Todo.find_by(id: params[:id])
         if logged_in? && @todo.user == current_user
+          @message = session[:message]
+          session[:message] = nil
           erb :'todos/edit'
         else
           redirect to '/'
@@ -98,7 +100,12 @@ class ToDoListController < ApplicationController
     patch '/todo-list-items/:id' do
         todo = Todo.find_by(id: params[:id])
         todo.update(params[:todo])
-        redirect to "/todo-list-items/#{todo.id}"
+        if params[:todo].has_key?("pet_ids")
+          redirect to "/todo-list-items/#{todo.id}"
+        else
+          session[:message] = "Must select at least 1 pet"
+          redirect to "/todo-list-items/#{todo.id}/edit"
+        end
     end
 
     delete '/todo-list-items/:id' do
