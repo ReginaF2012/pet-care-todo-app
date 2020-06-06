@@ -83,8 +83,14 @@ class ToDoListController < ApplicationController
     end
     
     post '/todo-list-items/:id/put-it-back-on-the-list' do
-        Todo.find_by(id: params[:id]).update(complete: false)
-        redirect to "/todo-list-items/#{params[:id]}"
+        todo = Todo.find_by(id: params[:id])
+        if todo.user == current_user
+          todo.update(complete: false)
+          redirect to "/todo-list-items/#{params[:id]}"
+        else
+          session[:message] = "Invalid Input"
+          redirect to '/todo-list-items'
+        end
     end
 
     post '/todo-list-items' do
