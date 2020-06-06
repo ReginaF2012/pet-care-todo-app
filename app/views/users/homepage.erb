@@ -33,7 +33,7 @@
 
     <h1>Welcome <%= current_user.name != "" ? current_user.name : current_user.email %>!</h1>
       <% if @pets_birthday_today.count > 0%>
-       <h3>Happy Birthday/Gotchaday to...</h3>
+       <h3>Happy Birthday/Gotcha Day to...</h3>
        <h2><%= @pets_birthday_today_names %>!!!</h2>
       <% end %>
       <p>
