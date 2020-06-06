@@ -37,6 +37,8 @@ class ToDoListController < ApplicationController
 
     get '/todo-list-items/new' do
         if logged_in?
+          @message = session[:message]
+          session[:message] = nil
           erb :'/todos/new'
         else
           redirect to '/'
@@ -82,11 +84,15 @@ class ToDoListController < ApplicationController
     end
 
     post '/todo-list-items' do
-        todo = Todo.create(params[:todo])
-        # Created an after_create callback method that does this
-        # todo.update(user: current_user)
-
-        redirect to "/todo-list-items/#{todo.id}"
+        if params[:todo].has_key?("pet_ids")
+          todo = Todo.create(params[:todo])
+          # Created an after_create callback method that does this
+          # todo.update(user: current_user)
+          redirect to "/todo-list-items/#{todo.id}"
+        else
+          session[:message] = "Must select at least 1 pet"
+          redirect to '/todo-list-items/new'
+        end
     end
 
     patch '/todo-list-items/:id' do
