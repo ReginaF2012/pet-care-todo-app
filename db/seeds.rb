@@ -21,7 +21,7 @@ end
 end
 
 5.times do
-    Pet.create(name: Faker::Games::Fallout., species: Faker::Creature::Animal.name, birthday: Faker::Date.between(from: 5.year.ago, to: Date.today), user: User.all.shuffle.first)
+    Pet.create(name: Faker::GreekPhilosophers.name, species: Faker::Creature::Animal.name, birthday: Faker::Date.between(from: 5.year.ago, to: Date.today), user: User.all.shuffle.first)
 end
 
 5.times do
