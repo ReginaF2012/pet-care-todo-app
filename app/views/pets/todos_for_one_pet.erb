@@ -35,10 +35,8 @@
     </ul>
   <% if @pet.todos.empty?%>
     <p>
-      Doesn't look like you have anything to do for <%= @pet.name %><br>
-      <a href ="/todo-list-items/new">Add something to your to do list?</a><br>
-      <a href="">Home</a><br>
-      <a href=<%= "/pets/#{@pet.slug}" %>><%= @pet.name %>'s page</a><br>
+      <h3>Doesn't look like you have anything to do for <%= @pet.name %></h3>
+      <a href=<%= "/pets/#{@pet.slug}" %>><%= @pet.name %>'s page</a>
     </p>
   <% else %>
     <h1>To Do List for <%= @pet.name %></h1>
