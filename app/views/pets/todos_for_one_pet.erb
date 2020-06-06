@@ -43,7 +43,7 @@
   <% else %>
     <h1>To Do List for <%= @pet.name %></h1>
     <ul>
-      <% @pet.todos.each do |todo| %>
+      <% @pet.todos.order(:datetime).each do |todo| %>
         <% if todo.complete == true%>
           <li><strike><h4><a href=<%= "/todo-list-items/#{todo.id}" %>><%= todo.name %></a></h4></strike></li> 
         <% else %>
