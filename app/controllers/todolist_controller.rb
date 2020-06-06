@@ -59,43 +59,63 @@ class ToDoListController < ApplicationController
 
     get '/todo-list-items/:id' do
         @todo = Todo.find_by(id: params[:id])
-        if logged_in? && @todo.user == current_user
-          erb :'todos/show'
+        if !@todo.is_a?(Todo)
+            session[:message] = "Invalid Input"
+            redirect to '/todo-list-items'
         else
-          redirect to '/'
+          if logged_in? && @todo.user == current_user
+            erb :'todos/show'
+          else
+            redirect to '/'
+          end
         end
     end
 
     get '/todo-list-items/:id/edit' do
         @todo = Todo.find_by(id: params[:id])
-        if logged_in? && @todo.user == current_user
-          @message = session[:message]
-          session[:message] = nil
-          erb :'todos/edit'
+        if !@todo.is_a?(Todo)
+          session[:message] = "Invalid Input"
+          redirect to '/todo-list-items'
         else
-          redirect to '/'
+          if logged_in? && @todo.user == current_user
+            @message = session[:message]
+            session[:message] = nil
+            erb :'todos/edit'
+          else
+            redirect to '/'
+          end
         end
     end
 
     post '/todo-list-items/:id/cross-it-off' do
         todo = Todo.find_by(id: params[:id])
-        if todo.user == current_user
-          todo.update(complete: true)
-          redirect to "/todo-list-items/#{params[:id]}"
+        if !@todo.is_a?(Todo)
+            session[:message] = "Invalid Input"
+            redirect to '/todo-list-items'
         else
-          session[:message] = "Invalid Input"
-          redirect to '/todo-list-items'
+          if todo.user == current_user
+            todo.update(complete: true)
+            redirect to "/todo-list-items/#{params[:id]}"
+          else
+            session[:message] = "Invalid Input"
+            redirect to '/todo-list-items'
+          end
         end
     end
     
     post '/todo-list-items/:id/put-it-back-on-the-list' do
         todo = Todo.find_by(id: params[:id])
-        if todo.user == current_user
-          todo.update(complete: false)
-          redirect to "/todo-list-items/#{params[:id]}"
+        if !@todo.is_a?(Todo)
+            session[:message] = "Invalid Input"
+            redirect to '/todo-list-items'
         else
-          session[:message] = "Invalid Input"
-          redirect to '/todo-list-items'
+          if todo.user == current_user
+            todo.update(complete: false)
+            redirect to "/todo-list-items/#{params[:id]}"
+          else
+            session[:message] = "Invalid Input"
+            redirect to '/todo-list-items'
+          end
         end
     end
 
