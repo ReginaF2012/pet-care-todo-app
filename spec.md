@@ -11,10 +11,10 @@ Specs:
 - [x] Ensure that users can't modify content created by other users -- Users can only modify their own content, they actually can't even view content that belongs to other users.
 - [x] Include user input validations -- User isn't created without valid email
 - [x] BONUS - not required - Display validation failures to user with error message (example form URL e.g. /posts/new) -- I didn't use flash messages but I used the session to store a message to display to the user.
-- [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+- [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
 Confirm
 - [x] You have a large number of small Git commits
 - [x] Your commit messages are meaningful
 - [x] You made the changes in a commit that relate to the commit message
-- [x] You don't include changes in a commit that aren't related to the commit message( I tried to do this, I may have forgotten a few time)
+- [x] You don't include changes in a commit that aren't related to the commit message -- I tried to do this, I may have forgotten a few times and included changes that aren't related to the commit message.

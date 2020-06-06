@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20200605165927) do
   create_table "todos", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.text     "notes"
+    t.text     "notes" #never ended up using this
     t.datetime "datetime"
     t.boolean  "complete",    default: false
     t.integer  "user_id"
