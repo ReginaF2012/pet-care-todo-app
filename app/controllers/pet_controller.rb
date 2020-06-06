@@ -22,21 +22,31 @@ class PetController < ApplicationController
 
     get '/pets/:slug' do
         @pet = Pet.find_by(slug: params[:slug])
-        if logged_in? && @pet.user == current_user
-          erb :'/pets/show'
+        if !@pet.is_a?(Pet)
+          session[:message] = "Invalid Input"
+          redirect to '/pets'
         else
-          redirect to '/'
+          if logged_in? && @pet.user == current_user
+            erb :'/pets/show'
+          else
+            redirect to '/'
+          end
         end
     end
 
     get '/pets/:slug/edit' do
         @pet = Pet.find_by(slug: params[:slug])
-        if logged_in? && @pet.user == current_user
-          @message = session[:message]
-          session[:message] = nil
-          erb :'/pets/edit'
-        else
-          redirect to '/'
+        if !@pet.is_a?(Pet)
+          session[:message] = "Invalid Input"
+          redirect to '/pets'
+        else  
+          if logged_in? && @pet.user == current_user
+            @message = session[:message]
+            session[:message] = nil
+            erb :'/pets/edit'
+          else
+            redirect to '/'
+          end
         end
     end
 
@@ -75,10 +85,15 @@ class PetController < ApplicationController
 
     get '/pets/:slug/to-do' do
       @pet = Pet.find_by(slug: params[:slug])
-      if logged_in? && @pet.user == current_user
-        erb :'/pets/todos_for_one_pet'
+      if !@pet.is_a?(Pet)
+        session[:message] = "Invalid Input"
+        redirect to '/pets'
       else
-        redirect to '/'
+        if logged_in? && @pet.user == current_user
+          erb :'/pets/todos_for_one_pet'
+        else
+          redirect to '/'
+        end
       end
     end
 end
