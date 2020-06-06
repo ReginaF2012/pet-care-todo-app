@@ -2,6 +2,8 @@ class PetController < ApplicationController
     get '/pets' do
         if logged_in?
           @pets = Pet.where(user_id: current_user.id)
+          @message = session[:message]
+          session[:message] = nil
           erb :'/pets/index'
         else 
           redirect to "/"
@@ -64,8 +66,11 @@ class PetController < ApplicationController
 
     delete '/pets/:slug' do
         pet = Pet.find_by(slug: params[:slug])
-        pet.destroy
-        redirect to '/pets'
+        if pet.user == current_user
+          pet.destroy
+          session[:message] = "Successfully Deleted"
+        end
+          redirect to '/pets'
     end
 
     get '/pets/:slug/to-do' do
