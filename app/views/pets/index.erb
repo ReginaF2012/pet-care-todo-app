@@ -33,10 +33,8 @@
     <h3>Why don't you <a href="/pets/new">add one?</a></h3>
   <% else %>
     <h1>All of your pets!</h1>
-      <ul>
       <% @pets.each do |pet| %>
-        <li><a href=<%= "/pets/#{pet.slug}" %>><%= pet.name %> <%= "the #{pet.species}" if pet.species != "" %></a> </li>
+        <h4><a href=<%= "/pets/#{pet.slug}" %>><%= pet.name %> <%= "the #{pet.species}" if pet.species != "" %></a></h4>
       <% end %>
-      </ul>
   <% end %>
 </div>
