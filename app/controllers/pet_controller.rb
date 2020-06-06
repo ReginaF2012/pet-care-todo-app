@@ -10,6 +10,8 @@ class PetController < ApplicationController
 
     get '/pets/new' do
       if logged_in?
+        @message = session[:message]
+        session[:message] = nil
         erb :'/pets/new'
       else
         redirect to '/'
@@ -35,9 +37,15 @@ class PetController < ApplicationController
     end
 
     post '/pets' do
-        pet = Pet.create(params[:pet])
-        pet.update(user: current_user)
-        redirect to "/pets/#{pet.slug}"
+        pet = Pet.new(params[:pet])
+        if pet.valid?
+          pet.save
+          pet.update(user: current_user)
+          redirect to "/pets/#{pet.slug}"
+        else
+          session[:message] = "Invalid Input"
+          redirect to '/pets/new'
+        end
     end
 
     patch '/pets/:slug' do
