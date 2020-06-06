@@ -89,7 +89,7 @@ class ToDoListController < ApplicationController
 
     post '/todo-list-items/:id/cross-it-off' do
         todo = Todo.find_by(id: params[:id])
-        if !@todo.is_a?(Todo)
+        if !todo.is_a?(Todo)
             session[:message] = "Invalid Input"
             redirect to '/todo-list-items'
         else
@@ -105,7 +105,7 @@ class ToDoListController < ApplicationController
     
     post '/todo-list-items/:id/put-it-back-on-the-list' do
         todo = Todo.find_by(id: params[:id])
-        if !@todo.is_a?(Todo)
+        if !todo.is_a?(Todo)
             session[:message] = "Invalid Input"
             redirect to '/todo-list-items'
         else
@@ -144,11 +144,16 @@ class ToDoListController < ApplicationController
 
     delete '/todo-list-items/:id' do
         todo = Todo.find_by(id: params[:id])
-        if todo.user == current_user
-          todo.destroy
-          session[:message] = "Successfully Deleted"
+        if !todo.is_a?(Todo)
+            session[:message] = "Invalid Input"
+            redirect to '/todo-list-items'
+        else
+          if todo.user == current_user
+            todo.destroy
+            session[:message] = "Successfully Deleted"
+          end
+          redirect to '/todo-list-items'
         end
-        redirect to '/todo-list-items'
     end
 
 end
