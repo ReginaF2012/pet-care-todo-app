@@ -37,8 +37,8 @@
   <% else%>
     <h1>Overdue Items on Your To Do List</h1>
     <ul>
-      <% @overdue_todos.order(:datetime).each do |todo|%>
-        <li><a href=<%= "/todo-list-items/#{todo.id}" %>><%= todo.name %></a></li>
+      <% @overdue_todos.each do |todo|%>
+        <li><h4><a href=<%= "/todo-list-items/#{todo.id}" %>><%= todo.name %></a></h4></li>
       <% end %>
     </ul><br><br>
   <% end %>
