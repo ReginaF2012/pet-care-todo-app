@@ -7,7 +7,8 @@ class SessionController < ApplicationController
 
     post '/signup' do
         user = User.new(params[:user])
-        if user.save
+        if user.valid?
+            user.save
             session[:message] = "Verify Your Information!"
             redirect to '/login'
         else
@@ -23,7 +24,7 @@ class SessionController < ApplicationController
     end
 
     post '/login' do
-        user = User.find_by(email: params[:user][:email])
+        user = User.find_by(email: params[:user]["email"])
     
         if user.authenticate(params[:user][:password])
             session[:user_id] = user.id
