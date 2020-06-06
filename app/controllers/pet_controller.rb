@@ -30,6 +30,8 @@ class PetController < ApplicationController
     get '/pets/:slug/edit' do
         @pet = Pet.find_by(slug: params[:slug])
         if logged_in? && @pet.user == current_user
+          @message = session[:message]
+          session[:message] = nil
           erb :'/pets/edit'
         else
           redirect to '/'
@@ -50,9 +52,14 @@ class PetController < ApplicationController
 
     patch '/pets/:slug' do
         pet = Pet.find_by(slug: params[:slug])
-        pet.update(params[:pet])
-        pet.make_slug
-        redirect to "/pets/#{pet.slug}"
+        if pet.valid? && pet.user == current_user
+          pet.update(params[:pet])
+          pet.make_slug
+          redirect to "/pets/#{pet.slug}"
+        else
+          session[:message] = "Invalid Input"
+          redirect to "/pets/#{pet.slug}/edit"
+        end
     end
 
     delete '/pets/:slug' do

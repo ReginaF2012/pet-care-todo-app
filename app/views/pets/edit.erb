@@ -33,6 +33,7 @@
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
       </li>-->
     </ul>
+    <p><%= @message if @message %></p>
 <h1>Edit <%= @pet.name %>'s Information.</h1>
   <form method="POST" action=<%= "/pets/#{@pet.slug}" %>>
     <input type="hidden" name="_method" value="PATCH">
