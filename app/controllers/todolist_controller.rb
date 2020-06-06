@@ -101,8 +101,8 @@ class ToDoListController < ApplicationController
 
     patch '/todo-list-items/:id' do
         todo = Todo.find_by(id: params[:id])
-        todo.update(params[:todo])
-        if params[:todo].has_key?("pet_ids")
+        if params[:todo].has_key?("pet_ids") && todo.user == current_user
+          todo.update(params[:todo])
           redirect to "/todo-list-items/#{todo.id}"
         else
           session[:message] = "Must select at least 1 pet"
