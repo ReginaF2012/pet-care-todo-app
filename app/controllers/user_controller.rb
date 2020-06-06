@@ -6,6 +6,7 @@ class UserController < ApplicationController
           todos = @user.todos.uniq
           @upcoming_todos = todos.select{ |todo| todo.datetime >= Date.today && todo.datetime <= 1.week.from_now && todo.  complete == false}
           @overdue_todos = current_user.todos.select{ |todo| todo.complete == false && todo.datetime < DateTime.now }
+          
           erb :'users/homepage'
         else
             session[:message] = "You don't have access to that page"
