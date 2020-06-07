@@ -3,6 +3,8 @@ The PetCareToDoApp is a Sinatra application that aids users in keeping track of 
 
 ## Video Walkthrough
 
+https://www.youtube.com/watch?v=f7AQTrBcEcQ&feature=youtu.be
+
 
 ## Installation
 
