@@ -35,7 +35,7 @@
     </ul>
   <h1><%= "#{@todo.name}" %></h1>
   <% if @todo.description && @todo.description != ""%>
-    <h4>"Description:"</h4><p> <%=@todo.description%></p>
+    <h4>Description:</h4><p> <%=@todo.description%></p>
   <% end %>
   <h4>Time:</h4><%= datetime_to_displaytime(@todo.datetime) %><br><br>
   <h4>For:</h4>
