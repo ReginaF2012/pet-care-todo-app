@@ -38,7 +38,7 @@
     <h1>Everything You've Crossed Off</h1>
     <ul>
       <% @completed_todos.each do |todo|%>
-        <li><h4><a href=<%= "/todo-list-items/#{todo.id}" %>><%= todo.name %></a></h4></li>
+        <li><h3><a href=<%= "/todo-list-items/#{todo.id}" %>><%= "#{todo.name} on #{datetime_to_displaytime(todo.datetime)}" %></a></h3></li>
       <% end %>
     </ul><br><br>
   <% end %>

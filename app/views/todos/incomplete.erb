@@ -38,7 +38,7 @@
       <h1>Everything That <bold>Isn't</bold> Crossed Off Your List</h1>
       <ul>
         <% @incompleted_todos.each do |todo|%>
-          <li><h3><a href=<%= "/todo-list-items/#{todo.id}" %>><%= todo.name %></a></h3></li>
+          <li><h3><a href=<%= "/todo-list-items/#{todo.id}" %>><%= "#{todo.name} on #{datetime_to_displaytime(todo.datetime)}" %></a></h3></li>
         <% end %>
       </ul><br><br>
     <% end %>

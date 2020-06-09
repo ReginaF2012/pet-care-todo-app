@@ -28,7 +28,6 @@ class SessionController < ApplicationController
     
         if user.authenticate(params[:user][:password])
             session[:user_id] = user.id
-            current_user
             redirect to "/users/#{current_user.id}"
         else
             @message = "Wrong Email or Password"

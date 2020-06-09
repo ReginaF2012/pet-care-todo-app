@@ -38,7 +38,7 @@
    <h1>Upcoming Items on Your To Do List</h1>
    <ul>
    <% @upcoming_todos.each do |todo| %>
-     <li><h4><a href=<%= "/todo-list-items/#{todo.id}" %>><%= "#{todo.name} on #{datetime_to_displaytime(todo.datetime)}" %></a></h4></li>
+     <li><h3><a href=<%= "/todo-list-items/#{todo.id}" %>><%= "#{todo.name} on #{datetime_to_displaytime(todo.datetime)}" %></a></h3></li>
    <% end %>
    </ul>
  <% end%>
