@@ -31,7 +31,7 @@
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
       </li>-->
     </ul>
-    <p><%= @message if @message %></p>
+    <div class="alert alert-danger" role="alert"><%= @message if @message %></div>
   <% if @todos.empty?%>
     <h3>Looks like you don't have anything to do.</h3>
     <h3><a href="/todo-list-items/new">Add something to your list?</a></h3>

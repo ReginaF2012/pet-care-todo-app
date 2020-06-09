@@ -1,5 +1,5 @@
 <div class="container">
-  <%= @message if @message %>
+  <div class="alert alert-danger" role="alert"><%= @message if @message %></div>
   <form method="POST" action="/login">
     <label for="user[email]">Email:</label>
     <input type="email" name="user[email]" required><br><br>
