@@ -42,7 +42,7 @@
   </form>
   <form method="POST" action=<%= "/pets/#{@pet.slug}"%>>
     <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete"><br><br>
+    <input type="submit" class="btn btn-danger" value="Delete"><br><br>
   </form>
   <p>
     <a href=<%= "/pets/#{@pet.slug}/to-do" %>>Everything on your To Do List for <%= @pet.name %></a><br>
