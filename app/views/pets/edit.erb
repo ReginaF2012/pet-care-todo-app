@@ -33,7 +33,9 @@
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
       </li>-->
     </ul>
-    <div class="alert alert-danger" role="alert"><%= @message if @message %></div>
+    <% if @message %>
+      <div class="alert alert-danger" role="alert"> <%= @message  %></div>
+    <% end %>
 <h1>Edit <%= @pet.name %>'s Information.</h1>
   <form method="POST" action=<%= "/pets/#{@pet.slug}" %>>
     <input type="hidden" name="_method" value="PATCH">

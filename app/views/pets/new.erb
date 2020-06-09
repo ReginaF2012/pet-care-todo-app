@@ -31,7 +31,9 @@
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
       </li>-->
     </ul>
-    <div class="alert alert-danger" role="alert"><%= @message if @message %></div>
+    <% if @message %>
+      <div class="alert alert-danger" role="alert"> <%= @message  %></div>
+    <% end %>
 <h1>Enter Your Pet's Information.</h1>
   <form method="POST" action="/pets">
     <label for="pet[name]">Name:</label>
