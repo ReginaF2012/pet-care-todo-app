@@ -12,7 +12,7 @@ class ToDoListController < ApplicationController
 
     get '/todo-list-items/overdue' do
         if logged_in?
-            @overdue_todos = current_user.todos.select{ |todo| todo.complete == false && todo.datetime < DateTime.now }
+            @overdue_todos = overdue_todos(current_user.todos)
             erb :'todos/overdue'
         else
            redirect to '/'
@@ -50,7 +50,7 @@ class ToDoListController < ApplicationController
     get '/todo-list-items/upcoming' do
         if logged_in?
             todos = current_user.todos
-            @upcoming_todos = todos.select{ |todo| todo.datetime >= Date.today && todo.datetime <= 1.week.from_now && todo.complete == false}
+            @upcoming_todos = upcoming_todos(todos)
             erb :'todos/upcoming'
         else 
             redirect to "/"
