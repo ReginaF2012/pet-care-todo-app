@@ -91,7 +91,7 @@ class ToDoListController < ApplicationController
         todo = Todo.find_by(id: params[:id])
         if todo.user == current_user
           todo.update(complete: true)
-          redirect to "/todo-list-items/#{params[:id]}"
+          redirect to "/todo-list-items"
         else
           session[:message] = "Invalid Input"
           redirect to '/todo-list-items'
@@ -102,7 +102,7 @@ class ToDoListController < ApplicationController
         todo = Todo.find_by(id: params[:id])
         if todo.user == current_user
           todo.update(complete: false)
-          redirect to "/todo-list-items/#{params[:id]}"
+          redirect to "/todo-list-items"
         else
           session[:message] = "Invalid Input"
           redirect to '/todo-list-items'
