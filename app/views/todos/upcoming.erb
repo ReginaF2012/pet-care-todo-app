@@ -35,7 +35,7 @@
  <% if @upcoming_todos.empty?%>
    <h3>Looks like there's isn't anything upcoming on your To Do List.</h3>
  <% else %>
-   <h1>Upcoming Items on Your To Do List</h1>
+   <h1>Upcoming</h1>
    <ul>
    <% @upcoming_todos.each do |todo| %>
      <li><h3><a href=<%= "/todo-list-items/#{todo.id}" %>><%= "#{todo.name} on #{datetime_to_displaytime(todo.datetime)}" %></a></h3></li>
