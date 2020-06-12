@@ -37,16 +37,17 @@
   <% if @todo.description && @todo.description != ""%>
     <h4>Description:</h4><p> <%=@todo.description%></p>
   <% end %>
-  <h4>Time:</h4><%= datetime_to_displaytime(@todo.datetime) %><br><br>
+  <h4>Time:</h4>
+  <h5><%= datetime_to_displaytime(@todo.datetime) %></h5><br>
   <h4>For:</h4>
   <ul>
   <% @todo.pets.each do |pet|%>
     
-    <li><%= pet.name %></li>
+    <li><h5><%= pet.name %></h5></li>
     
   <% end %>
   </ul><br>
-  <h4>Crossed off?</h4><%= @todo.complete == true ? "Yes!" : "No" %><br><br>
+  <h4>Crossed off?</h4><h5><%= @todo.complete == true ? "Yes!" : "No" %></h5><br>
 
   <% if @todo.complete == false %>
     <form method="POST" action=<%= "/todo-list-items/#{@todo.id}/cross-it-off" %>>
