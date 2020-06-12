@@ -39,6 +39,15 @@ class ApplicationController < Sinatra::Base
       t.strftime("%FT%H:%M")
     end
     
+    # finds all todos with a datetime between today and 1 week from now
+    def upcoming_todos(todos)
+      todos.select{ |todo| todo.datetime >= Date.today && todo.datetime <= 1.week.from_now && todo.complete == false}
+    end
+
+    def overdue_todos(todos)
+      todos.select{ |todo| todo.complete == false && todo.datetime < DateTime.now }
+    end
+    
   end
 
 end

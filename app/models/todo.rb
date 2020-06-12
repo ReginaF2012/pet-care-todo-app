@@ -8,9 +8,5 @@ class Todo < ActiveRecord::Base
         self.update(user: self.pets.first.user)
     end
 
-    # after_create :not_complete
 
-    # def not_complete
-    #     self.complete = false
-    # end
 end
