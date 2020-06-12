@@ -15,3 +15,15 @@ body {
     padding: 2.25%;
     width: 85%;
   }
+
+  a:link {
+    color: #490018;
+  }
+
+  a:visited {
+    color: #300035
+  }
+  
+  a:hover {
+    color: #670081
+  }
