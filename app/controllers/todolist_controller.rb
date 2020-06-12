@@ -59,7 +59,7 @@ class ToDoListController < ApplicationController
 
     get '/todo-list-items/:id' do
         @todo = Todo.find_by(id: params[:id])
-        if !@todo.is_a?(Todo)
+        if !@todo
             session[:message] = "Invalid Input"
             redirect to '/todo-list-items'
         else
@@ -73,7 +73,7 @@ class ToDoListController < ApplicationController
 
     get '/todo-list-items/:id/edit' do
         @todo = Todo.find_by(id: params[:id])
-        if !@todo.is_a?(Todo)
+        if !@todo
           session[:message] = "Invalid Input"
           redirect to '/todo-list-items'
         else
@@ -89,41 +89,29 @@ class ToDoListController < ApplicationController
 
     post '/todo-list-items/:id/cross-it-off' do
         todo = Todo.find_by(id: params[:id])
-        if !todo.is_a?(Todo)
-            session[:message] = "Invalid Input"
-            redirect to '/todo-list-items'
+        if todo.user == current_user
+          todo.update(complete: true)
+          redirect to "/todo-list-items/#{params[:id]}"
         else
-          if todo.user == current_user
-            todo.update(complete: true)
-            redirect to "/todo-list-items/#{params[:id]}"
-          else
-            session[:message] = "Invalid Input"
-            redirect to '/todo-list-items'
-          end
+          session[:message] = "Invalid Input"
+          redirect to '/todo-list-items'
         end
     end
     
     post '/todo-list-items/:id/put-it-back-on-the-list' do
         todo = Todo.find_by(id: params[:id])
-        if !todo.is_a?(Todo)
-            session[:message] = "Invalid Input"
-            redirect to '/todo-list-items'
+        if todo.user == current_user
+          todo.update(complete: false)
+          redirect to "/todo-list-items/#{params[:id]}"
         else
-          if todo.user == current_user
-            todo.update(complete: false)
-            redirect to "/todo-list-items/#{params[:id]}"
-          else
-            session[:message] = "Invalid Input"
-            redirect to '/todo-list-items'
-          end
+          session[:message] = "Invalid Input"
+          redirect to '/todo-list-items'
         end
     end
 
     post '/todo-list-items' do
         if params[:todo].has_key?("pet_ids")
           todo = Todo.create(params[:todo])
-          # Created an after_create callback method that does this
-          # todo.update(user: current_user)
           redirect to "/todo-list-items/#{todo.id}"
         else
           session[:message] = "Must select at least 1 pet"
@@ -144,16 +132,11 @@ class ToDoListController < ApplicationController
 
     delete '/todo-list-items/:id' do
         todo = Todo.find_by(id: params[:id])
-        if !todo.is_a?(Todo)
-            session[:message] = "Invalid Input"
-            redirect to '/todo-list-items'
-        else
-          if todo.user == current_user
-            todo.destroy
-            session[:message] = "Successfully Deleted"
-          end
-          redirect to '/todo-list-items'
+        if todo.user == current_user
+          todo.destroy
+          session[:message] = "Successfully Deleted"
         end
+        redirect to '/todo-list-items'
     end
 
 end
