@@ -35,11 +35,14 @@
     <% if @incompleted_todos.empty?%>
     <h3>There isn't anything on your list that isn't crossed off.</h3>
     <% else%>
-      <h1>Incomplete</h1>
+
       <ul>
+        <h1>Incomplete:</h1>
+
         <% @incompleted_todos.each do |todo|%>
           <li><h3><a href=<%= "/todo-list-items/#{todo.id}" %>><%= "#{todo.name} on #{datetime_to_displaytime(todo.datetime)}" %></a></h3></li>
         <% end %>
+
       </ul><br><br>
     <% end %>
 </div>

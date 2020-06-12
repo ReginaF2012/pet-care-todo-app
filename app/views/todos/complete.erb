@@ -35,11 +35,14 @@
   <% if @completed_todos.empty?%>
     <h3>You have nothing crossed off of your To Do List</h3>
   <% else %>
-    <h1>Complete</h1>
     <ul>
+
+      <h1>Complete:</h1>
+    
       <% @completed_todos.each do |todo|%>
         <li><h3><a href=<%= "/todo-list-items/#{todo.id}" %>><%= "#{todo.name} on #{datetime_to_displaytime(todo.datetime)}" %></a></h3></li>
       <% end %>
+
     </ul><br><br>
   <% end %>
 </div>

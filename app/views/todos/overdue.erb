@@ -35,8 +35,9 @@
   <% if @overdue_todos.empty?%>
     <h3> Nothing is overdue.</h3>
   <% else%>
-    <h1>Overdue</h1>
-    <ul>
+     <ul>
+     <h1>Overdue:</h1>
+   
       <% @overdue_todos.each do |todo|%>
         <li><h3><a href=<%= "/todo-list-items/#{todo.id}" %>><%= "#{todo.name} on #{datetime_to_displaytime(todo.datetime)}" %></a></h3></li>
       <% end %>
