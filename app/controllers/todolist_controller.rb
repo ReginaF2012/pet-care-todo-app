@@ -1,7 +1,7 @@
 class ToDoListController < ApplicationController
     get '/todo-list-items' do 
         if logged_in?
-            @todos = current_user.todos.order(datetime: :desc)
+            @todos = current_user.todos
             @message = session[:message]
             session[:message] = nil
             erb :'/todos/index'
