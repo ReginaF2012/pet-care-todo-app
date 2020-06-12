@@ -43,7 +43,8 @@ class ApplicationController < Sinatra::Base
     def upcoming_todos(todos)
       todos.select{ |todo| todo.datetime >= Date.today && todo.datetime <= 1.week.from_now && todo.complete == false}
     end
-
+    
+    # finds all todos that are incomplete and have a datetime prior to current time
     def overdue_todos(todos)
       todos.select{ |todo| todo.complete == false && todo.datetime < DateTime.now }
     end

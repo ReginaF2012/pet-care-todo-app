@@ -1,11 +1,12 @@
 body {
-    background: lightblue ;
+    background-image: url("../images/shallow-focus-photo-of-green-plants-1128796.jpg");
+    /* background-color: lightblue; */
     font-family: Sans-Serif;
     line-height: 18px;
   }
 
   .container {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.8);
     -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
     box-shadow: 0 0 10px rgba(0,0,0,.3);
