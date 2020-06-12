@@ -22,7 +22,7 @@ class PetController < ApplicationController
 
     get '/pets/:slug' do
         @pet = Pet.find_by(slug: params[:slug])
-        if !@pet.is_a?(Pet)
+        if !@pet
           session[:message] = "Invalid Input"
           redirect to '/pets'
         else
@@ -36,7 +36,7 @@ class PetController < ApplicationController
 
     get '/pets/:slug/edit' do
         @pet = Pet.find_by(slug: params[:slug])
-        if !@pet.is_a?(Pet)
+        if !@pet
           session[:message] = "Invalid Input"
           redirect to '/pets'
         else  
@@ -85,7 +85,7 @@ class PetController < ApplicationController
 
     get '/pets/:slug/to-do' do
       @pet = Pet.find_by(slug: params[:slug])
-      if !@pet.is_a?(Pet)
+      if !@pet
         session[:message] = "Invalid Input"
         redirect to '/pets'
       else
